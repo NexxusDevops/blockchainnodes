@@ -1,8 +1,21 @@
 import { Button } from "@/components/ui/button";
 import { useQuery } from "@tanstack/react-query";
 
+interface StatusData {
+  validatorHealth: string;
+  rpcResponse: string;
+  networkCoverage: string;
+  totalStaked: string;
+  delegators: string;
+  rewards: string;
+  commission: string;
+  uptime: string;
+  networks: number;
+  validators: number;
+}
+
 export function HeroSection() {
-  const { data: status } = useQuery({
+  const { data: status } = useQuery<StatusData>({
     queryKey: ["/api/status"],
   });
 

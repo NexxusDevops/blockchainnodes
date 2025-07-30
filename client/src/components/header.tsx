@@ -11,9 +11,13 @@ export function Header() {
   const { isConnected, connectWallet, disconnectWallet, address } = useWallet();
   const [walletModalOpen, setWalletModalOpen] = useState(false);
 
-  const handleWalletConnect = async (type: "keplr" | "leap") => {
-    await connectWallet(type);
-    setWalletModalOpen(false);
+  const handleWalletConnect = async (type: "keplr" | "leap" | "metamask") => {
+    try {
+      await connectWallet(type);
+      setWalletModalOpen(false);
+    } catch (error) {
+      console.error("Wallet connection failed:", error);
+    }
   };
 
   const scrollToSection = (sectionId: string) => {
@@ -91,12 +95,12 @@ export function Header() {
                     Connect Wallet
                   </Button>
                 </DialogTrigger>
-                <DialogContent className="max-w-md">
+                <DialogContent className="max-w-md" aria-describedby="wallet-dialog-description">
                   <DialogHeader>
                     <DialogTitle className="text-center text-2xl font-bold mb-2">
                       Connect Wallet
                     </DialogTitle>
-                    <p className="text-center text-gray-600 dark:text-gray-400">
+                    <p id="wallet-dialog-description" className="text-center text-gray-600 dark:text-gray-400">
                       Choose your preferred wallet to connect
                     </p>
                   </DialogHeader>
@@ -127,6 +131,21 @@ export function Header() {
                         <div className="font-semibold">Leap Wallet</div>
                         <div className="text-sm text-gray-600 dark:text-gray-400">
                           Multi-chain Cosmos wallet
+                        </div>
+                      </div>
+                    </Button>
+
+                    <Button
+                      onClick={() => handleWalletConnect("metamask")}
+                      className="w-full flex items-center space-x-4 p-4 border border-gray-200 dark:border-gray-700 rounded-xl hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors bg-transparent text-foreground hover:text-foreground"
+                    >
+                      <div className="w-10 h-10 bg-gradient-to-r from-orange-500 to-red-600 rounded-lg flex items-center justify-center">
+                        <Wallet className="text-white w-5 h-5" />
+                      </div>
+                      <div className="text-left">
+                        <div className="font-semibold">MetaMask</div>
+                        <div className="text-sm text-gray-600 dark:text-gray-400">
+                          Ethereum & EVM networks
                         </div>
                       </div>
                     </Button>

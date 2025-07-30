@@ -122,6 +122,23 @@ export function WalletSection() {
                   </div>
                   <ChevronRight className="w-4 h-4 text-gray-400 group-hover:text-primary transition-colors" />
                 </Button>
+
+                <Button
+                  onClick={() => connectWallet("metamask")}
+                  variant="outline"
+                  className="w-full flex items-center justify-between p-4 h-auto border-2 hover:border-primary transition-colors group"
+                >
+                  <div className="flex items-center space-x-4">
+                    <div className="w-10 h-10 bg-gradient-to-r from-orange-500 to-red-600 rounded-lg flex items-center justify-center">
+                      <Wallet className="text-white w-5 h-5" />
+                    </div>
+                    <div className="text-left">
+                      <div className="font-semibold">MetaMask</div>
+                      <div className="text-sm text-gray-600 dark:text-gray-400">Ethereum & EVM networks</div>
+                    </div>
+                  </div>
+                  <ChevronRight className="w-4 h-4 text-gray-400 group-hover:text-primary transition-colors" />
+                </Button>
               </div>
 
               {/* Connected State */}

@@ -20,7 +20,7 @@ const networkColors: Record<string, string> = {
 };
 
 export function NetworksSection() {
-  const { data: networks, isLoading } = useQuery({
+  const { data: networks, isLoading } = useQuery<Network[]>({
     queryKey: ["/api/networks"],
   });
 

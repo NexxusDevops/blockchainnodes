@@ -18,7 +18,7 @@ const serviceColors = {
 };
 
 export function ServicesSection() {
-  const { data: services, isLoading } = useQuery({
+  const { data: services, isLoading } = useQuery<Service[]>({
     queryKey: ["/api/services"],
   });
 

@@ -1,8 +1,21 @@
 import { useQuery } from "@tanstack/react-query";
 import { Card, CardContent } from "@/components/ui/card";
 
+interface StatusData {
+  validatorHealth: string;
+  rpcResponse: string;
+  networkCoverage: string;
+  totalStaked: string;
+  delegators: string;
+  rewards: string;
+  commission: string;
+  uptime: string;
+  networks: number;
+  validators: number;
+}
+
 export function DashboardSection() {
-  const { data: status, isLoading } = useQuery({
+  const { data: status, isLoading } = useQuery<StatusData>({
     queryKey: ["/api/status"],
   });
 

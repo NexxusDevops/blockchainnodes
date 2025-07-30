@@ -102,6 +102,8 @@ export class MemStorage implements IStorage {
     const service: Service = { 
       ...insertService, 
       id, 
+      price: insertService.price ?? null,
+      isPopular: insertService.isPopular ?? false,
       createdAt: new Date() 
     };
     this.services.set(id, service);
@@ -122,6 +124,7 @@ export class MemStorage implements IStorage {
     const network: Network = { 
       ...insertNetwork, 
       id, 
+      isSupported: insertNetwork.isSupported ?? true,
       createdAt: new Date() 
     };
     this.networks.set(id, network);
@@ -164,6 +167,9 @@ export class MemStorage implements IStorage {
     const invoice: Invoice = { 
       ...insertInvoice, 
       id, 
+      status: insertInvoice.status ?? "pending",
+      walletAddress: insertInvoice.walletAddress ?? null,
+      transactionHash: insertInvoice.transactionHash ?? null,
       createdAt: new Date(),
       paidAt: null
     };
