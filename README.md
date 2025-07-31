@@ -117,6 +117,17 @@ The platform supports three wallet types:
 
 This project is proprietary software owned by BlockchainNodes.io.
 
+## Deployment
+
+### Frontend (Vercel)
+- Live Site: [https://blockchainnodes.vercel.app](https://blockchainnodes.vercel.app)
+- Build Command: `vite build`
+- Output Directory: `dist/public`
+
+### Backend
+- Deploy to Railway, Render, or similar Node.js hosting
+- Environment variable: `DATABASE_URL`
+
 ## Contact
 
 - Website: [BlockchainNodes.io](https://blockchainnodes.io)
